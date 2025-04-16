@@ -3,83 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gzzcoo - Pentester</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Gzzcoo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-4N5ZzFqQpQuDQpTyvYFZ7TOZ1QIq9iJw7vwlg94hKkEY4IynvZ+ZaAOXcyRoTkK1Z6SXB8M0vO09ZTqRvWGl0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    html, body {
+    body {
       background-color: #0a0a0a;
-      color: #ff0044;
+      color: #33ffcc;
       font-family: 'Fira Code', monospace;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-
-    canvas.matrix-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .content {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4em 1em;
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 8px;
+      height: 100vh;
+      margin: 0;
     }
-
     p {
       margin-bottom: 2em;
-      color: #aaa;
+      color: #888;
       letter-spacing: 1px;
     }
     ul {
       list-style: none;
       padding: 0;
-      margin: 0;
     }
     li {
       margin: 1em 0;
     }
     a {
       text-decoration: none;
-      color: #ff0044;
+      color: #33ffcc;
       font-size: 1.3em;
       transition: all 0.3s ease;
     }
     a i, a img {
       margin-right: 10px;
       vertical-align: middle;
+    }
+    a img {
       filter: invert(1) brightness(2);
     }
     a:hover {
-      color: #ff66aa;
-      text-shadow: 0 0 8px #ff66aa;
+      color: #ff00cc;
+      text-shadow: 0 0 5px #ff00cc;
     }
     .terminal {
       background-color: #111;
       padding: 20px;
       border-radius: 5px;
-      box-shadow: 0 0 10px #ff004433;
+      box-shadow: 0 0 10px #00ffcc33;
       width: 90%;
       max-width: 600px;
       margin-bottom: 3em;
       font-size: 1.2em;
-      color: #ff0044;
+      color: #33ffcc;
     }
     .line {
       display: flex;
@@ -87,14 +63,14 @@
       align-items: center;
     }
     .prompt {
-      color: #ff0033;
+      color: #33ff33;
       margin-right: 5px;
     }
     .typed-text {
       display: inline;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 0.15em solid #ff0044;
+      border-right: 0.15em solid #33ffcc;
     }
     .output {
       color: #ffffff;
@@ -104,7 +80,7 @@
     }
   </style>
   <script>
-    window.onload = function () {
+    document.addEventListener("DOMContentLoaded", function () {
       const text = "./usr/bin/whoami";
       const output = "> gzzcoo";
       const typingElement = document.getElementById("typed-text");
@@ -125,67 +101,27 @@
       }
 
       type();
-
-      const canvas = document.createElement('canvas');
-      canvas.classList.add('matrix-canvas');
-      document.body.appendChild(canvas);
-
-      const ctx = canvas.getContext("2d");
-      const letters = "01";
-      const fontSize = 16;
-      let columns, drops;
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        columns = Math.floor(canvas.width / fontSize);
-        drops = new Array(columns).fill(1);
-      }
-
-      function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = "#ff0044";
-        ctx.font = fontSize + "px monospace";
-
-        for (let i = 0; i < drops.length; i++) {
-          const text = letters.charAt(Math.floor(Math.random() * letters.length));
-          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-          }
-
-          drops[i]++;
-        }
-      }
-
-      resizeCanvas();
-      setInterval(drawMatrix, 70);
-      window.addEventListener("resize", resizeCanvas);
-    };
+    });
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="content">
-    <div class="terminal">
-      <div class="line">
-        <span class="prompt">$</span><span class="typed-text" id="typed-text"></span>
-      </div>
-      <div class="line">
-        <span class="output" id="typed-output">&gt; gzzcoo</span>
-      </div>
+  <div class="terminal">
+    <div class="line">
+      <span class="prompt">$</span><span class="typed-text" id="typed-text"></span>
     </div>
-    <p>Pentester | Red Team | HackTheBox Addict</p>
-    <ul>
-      <li><a href="https://gzzcoo.gitbook.io/pentest-notes" target="_blank"><img src="book-svgrepo-com.svg" width="20" height="20" alt="Pentest Notes Icon">Pentest Notes</a></li>
-      <li><a href="https://gzzcoo.gitbook.io/walkthroughs" target="_blank"><img src="book-album-svgrepo-com.svg" width="20" height="20" alt="Walkthroughs Icon">Walkthroughs</a></li>
-      <li><a href="https://github.com/gzzcoo" target="_blank"><img src="github-142-svgrepo-com.svg" width="20" height="20" alt="GitHub Icon">GitHub</a></li>
-      <li><a href="https://x.com/gzzcoo" target="_blank"><img src="11053970_x_logo_twitter_new_brand_icon.svg" width="20" height="20" alt="Twitter Icon">Twitter</a></li>
-      <li><a href="https://app.hackthebox.com/users/1214575" target="_blank"><img src="hackthebox-svgrepo-com.svg" width="20" height="20" alt="HackTheBox Icon">Hack The Box</a></li>
-    </ul>
+    <div class="line">
+      <span class="output" id="typed-output">&gt; gzzcoo</span>
+    </div>
   </div>
+
+  <p>Pentester | Red Team | HackTheBox</p>
+  <ul>
+    <li><a href="https://gzzcoo.gitbook.io/pentest-notes" target="_blank"><img src="book-svgrepo-com.svg" width="20" height="20" alt="Pentest Notes Icon">Pentest Notes</a></li>
+    <li><a href="https://gzzcoo.gitbook.io/walkthroughs" target="_blank"><img src="book-album-svgrepo-com.svg" width="20" height="20" alt="Walkthroughs Icon">Walkthroughs</a></li>
+    <li><a href="https://github.com/gzzcoo" target="_blank"><img src="github-142-svgrepo-com.svg" width="20" height="20" alt="GitHub Icon">GitHub</a></li>
+    <li><a href="https://x.com/gzzcoo" target="_blank"><img src="11053970_x_logo_twitter_new_brand_icon.svg" width="20" height="20" alt="Twitter Icon">Twitter</a></li>
+    <li><a href="https://app.hackthebox.com/users/1214575" target="_blank"><img src="hackthebox-svgrepo-com.svg" width="20" height="20" alt="HackTheBox Icon">Hack The Box</a></li>
+  </ul>
 </body>
 </html>
