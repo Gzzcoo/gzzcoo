@@ -86,7 +86,9 @@
           setTimeout(type, 75);
         } else {
           typingElement.style.borderRight = "none";
-          outputElement.style.opacity = 1;
+          setTimeout(() => {
+            outputElement.style.opacity = 1;
+          }, 300);
         }
       }
 
@@ -101,7 +103,7 @@
       <span class="prompt">$</span><span class="typed-text" id="typed-text"></span>
     </div>
     <div class="line">
-      <span class="prompt" id="typed-output">&gt; gzzcoo</span>
+      <span class="output" id="typed-output">&gt; gzzcoo</span>
     </div>
   </div>
 
