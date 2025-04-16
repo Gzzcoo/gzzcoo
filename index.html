@@ -39,19 +39,6 @@
       color: #ff00cc;
       text-shadow: 0 0 5px #ff00cc;
     }
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 24px;
-      background-color: #33ffcc;
-      animation: blink 1s step-start infinite;
-      margin-left: 5px;
-    }
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
     .terminal {
       background-color: #111;
       padding: 20px;
@@ -63,25 +50,28 @@
       font-size: 1.2em;
       color: #33ffcc;
     }
-    .command, .output {
-      white-space: pre;
+    .line {
+      display: flex;
+      flex-direction: column;
     }
-    .command {
+    .prompt {
+      color: #33ff33;
+    }
+    .typing-text {
       overflow: hidden;
-      border-right: .15em solid #33ffcc;
       white-space: nowrap;
-      animation: typing 2s steps(20, end), blink-caret .75s step-end infinite;
-      width: 0;
+      border-right: 0.15em solid #33ffcc;
+      animation: typing 2s steps(22, end), blink-caret 0.75s step-end infinite;
     }
-    .output {
+    .result {
       color: #ffffff;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
-      animation-delay: 2.1s;
+      animation-delay: 2.2s;
     }
     @keyframes typing {
       from { width: 0 }
-      to { width: 14ch }
+      to { width: 22ch }
     }
     @keyframes blink-caret {
       from, to { border-color: transparent }
@@ -97,8 +87,8 @@
 </head>
 <body>
   <div class="terminal">
-    <div><span class="command">/usr/bin/whoami</span></div>
-    <div class="output">gzzcoo</div>
+    <div class="line"><span class="prompt">$ <span class="typing-text">./usr/bin/whoami</span></span></div>
+    <div class="line"><span class="prompt">&gt; </span><span class="result">gzzcoo</span></div>
   </div>
 
   <p>Pentester | Red Team | HackTheBox Addict</p>
