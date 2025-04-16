@@ -67,6 +67,7 @@
     .output {
       color: #ffffff;
       opacity: 0;
+      white-space: nowrap;
       transition: opacity 0.5s ease-in;
     }
   </style>
@@ -97,11 +98,10 @@
 <body>
   <div class="terminal">
     <div class="line">
-      <span class="prompt">$</span>
-      <span class="typed-text" id="typed-text"></span>
+      <span class="prompt">$</span><span class="typed-text" id="typed-text"></span>
     </div>
     <div class="line">
-      <span class="output" id="typed-output"></span>
+      <span class="prompt" id="typed-output">&gt; gzzcoo</span>
     </div>
   </div>
 
