@@ -51,10 +51,12 @@
     }
     .line {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
     }
     .prompt {
       color: #33ff33;
+      margin-right: 5px;
     }
     .typed-text {
       display: inline;
@@ -71,7 +73,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const text = "./usr/bin/whoami";
-      const output = "gzzcoo";
+      const output = "> gzzcoo";
       const typingElement = document.getElementById("typed-text");
       const outputElement = document.getElementById("typed-output");
       let i = 0;
@@ -94,8 +96,13 @@
 </head>
 <body>
   <div class="terminal">
-    <div class="line"><span class="prompt">$ <span class="typed-text" id="typed-text"></span></span></div>
-    <div class="line"><span class="prompt">&gt; </span><span class="output" id="typed-output">gzzcoo</span></div>
+    <div class="line">
+      <span class="prompt">$</span>
+      <span class="typed-text" id="typed-text"></span>
+    </div>
+    <div class="line">
+      <span class="output" id="typed-output"></span>
+    </div>
   </div>
 
   <p>Pentester | Red Team | HackTheBox Addict</p>
