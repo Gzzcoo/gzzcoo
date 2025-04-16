@@ -103,7 +103,7 @@
       <div class="output" id="typed-output">&gt; gzzcoo</div>
     </div>
 
-    <p>Pentester | Red Team | HackTheBox Addict</p>
+    <p>Pentester | Red Team | HackTheBox</p>
 
     <ul>
       <li><a href="https://gzzcoo.gitbook.io/pentest-notes" target="_blank"><img src="book-svgrepo-com.svg" width="20">Pentest Notes</a></li>
@@ -137,44 +137,6 @@
     }
 
     type();
-
-    // Matrix background
-    const canvas = document.getElementById("matrix");
-    const ctx = canvas.getContext("2d");
-    const letters = "01";
-    const fontSize = 16;
-    let columns;
-    let drops;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      columns = Math.floor(canvas.width / fontSize);
-      drops = new Array(columns).fill(1);
-    }
-
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#ff0044";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const char = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-
-        drops[i]++;
-      }
-    }
-
-    resizeCanvas();
-    setInterval(drawMatrix, 60);
-    window.addEventListener("resize", resizeCanvas);
-  };
 </script>
 
 </body>
