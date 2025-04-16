@@ -14,23 +14,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    .matrix {
+    canvas.matrix-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: black;
       z-index: -1;
-    }
-
-    canvas {
-      display: block;
     }
 
     p {
@@ -70,6 +65,7 @@
       margin-bottom: 3em;
       font-size: 1.2em;
       color: #ff0044;
+      z-index: 1;
     }
     .line {
       display: flex;
@@ -118,9 +114,10 @@
 
       // MATRIX EFFECT
       const canvas = document.createElement('canvas');
+      canvas.classList.add('matrix-canvas');
+      document.body.prepend(canvas);
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      document.body.appendChild(canvas);
       const ctx = canvas.getContext("2d");
       const letters = "01";
       const fontSize = 14;
