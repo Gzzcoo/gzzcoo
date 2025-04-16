@@ -58,10 +58,40 @@
         opacity: 0;
       }
     }
+    .terminal {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #00ffcc33;
+      width: 90%;
+      max-width: 600px;
+      margin-bottom: 3em;
+      font-size: 1.2em;
+      color: #33ffcc;
+    }
+    .command {
+      color: #00ffcc;
+    }
+    .output {
+      color: #ffffff;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+      animation-delay: 1s;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="terminal">
+    <div><span class="command">/usr/bin/whoami</span></div>
+    <div class="output">gzzcoo</div>
+  </div>
+
   <h1>Gzzcoo<span class="cursor"></span></h1>
   <p>Pentester | Red Team | HackTheBox Addict</p>
   <ul>
