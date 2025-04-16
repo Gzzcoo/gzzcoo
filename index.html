@@ -17,12 +17,6 @@
       margin: 0;
       overflow: hidden;
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-      color: #00ffff;
-      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
-    }
     p {
       margin-bottom: 2em;
       color: #888;
@@ -69,14 +63,29 @@
       font-size: 1.2em;
       color: #33ffcc;
     }
+    .command, .output {
+      white-space: pre;
+    }
     .command {
-      color: #00ffcc;
+      overflow: hidden;
+      border-right: .15em solid #33ffcc;
+      white-space: nowrap;
+      animation: typing 2s steps(20, end), blink-caret .75s step-end infinite;
+      width: 0;
     }
     .output {
       color: #ffffff;
-      animation: fadeIn 2s ease forwards;
       opacity: 0;
-      animation-delay: 1s;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 2.1s;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 14ch }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #33ffcc; }
     }
     @keyframes fadeIn {
       to {
@@ -92,7 +101,6 @@
     <div class="output">gzzcoo</div>
   </div>
 
-  <h1>Gzzcoo<span class="cursor"></span></h1>
   <p>Pentester | Red Team | HackTheBox Addict</p>
   <ul>
     <li><a href="https://gzzcoo.gitbook.io/pentest-notes" target="_blank">📘 Pentest Notes</a></li>
